@@ -1,74 +1,49 @@
-// lib/i18n.ts
+export const i18n = {
+    defaultLocale: 'en',
+    locales: ['en', 'ru', 'de', 'fr', 'es'],
+} as const;
 
-const translations: Record<string, Record<string, string>> = {
+export type Locale = (typeof i18n)['locales'][number];
+
+export const dictionaries = {
     en: {
-        'dropzone.title': 'Drop your file here',
-        'dropzone.subtitle': 'or click to browse',
-        'quality.label': 'Quality',
-        'mode.label': 'Compression mode',
-        'mode.fast': 'Fast (lossless)',
-        'mode.deep': 'Deep (maximum)',
-        'button.compress': 'Compress Now',
-        'button.processing': 'Processing...',
-        'result.title': 'Compression Complete!',
-        'result.original': 'Original',
-        'result.compressed': 'Compressed',
-        'result.saved': 'Saved',
-        'button.download': 'Download',
+        title: "Zipply | Smart Online Image Compressor",
+        description: "Compress JPG, PNG, SVG, and WebP images without losing quality. Fast, free, and secure online image optimization.",
+        dropzone: "Drop images here or click to upload",
+        stats: "Reduced by",
+        downloadAll: "Download All",
+        footer: "Free Online Image Compression",
     },
     ru: {
-        'dropzone.title': 'Перетащите файл сюда',
-        'dropzone.subtitle': 'или нажмите для выбора',
-        'quality.label': 'Качество',
-        'mode.label': 'Режим сжатия',
-        'mode.fast': 'Быстрое (без потерь)',
-        'mode.deep': 'Глубокое (максимальное)',
-        'button.compress': 'Сжать',
-        'button.processing': 'Обработка...',
-        'result.title': 'Сжатие завершено!',
-        'result.original': 'Исходный',
-        'result.compressed': 'Сжатый',
-        'result.saved': 'Сэкономлено',
-        'button.download': 'Скачать',
-    },
-    es: {
-        'dropzone.title': 'Suelta tu archivo aquí',
-        'dropzone.subtitle': 'o haz clic para seleccionar',
-        'quality.label': 'Calidad',
-        'button.compress': 'Comprimir',
-        'button.processing': 'Procesando...',
-        'result.title': '¡Compresión completa!',
-        'button.download': 'Descargar',
-    },
-    pt: {
-        'dropzone.title': 'Solte seu arquivo aqui',
-        'dropzone.subtitle': 'ou clique para selecionar',
-        'quality.label': 'Qualidade',
-        'button.compress': 'Comprimir',
-        'button.processing': 'Processando...',
-        'result.title': 'Compressão concluída!',
-        'button.download': 'Baixar',
+        title: "Zipply | Умное сжатие изображений онлайн",
+        description: "Сжимайте изображения JPG, PNG, SVG и WebP без потери качества. Быстрый, бесплатный и безопасный оптимизатор картинок.",
+        dropzone: "Перетащите изображения сюда или нажмите для загрузки",
+        stats: "Сжато на",
+        downloadAll: "Скачать всё",
+        footer: "Бесплатное сжатие изображений онлайн",
     },
     de: {
-        'dropzone.title': 'Datei hier ablegen',
-        'dropzone.subtitle': 'oder klicken zum Auswählen',
-        'quality.label': 'Qualität',
-        'button.compress': 'Komprimieren',
-        'button.processing': 'Verarbeitung...',
-        'result.title': 'Komprimierung abgeschlossen!',
-        'button.download': 'Herunterladen',
+        title: "Zipply | Intelligente Bildkomprimierung",
+        description: "Komprimieren Sie JPG-, PNG-, SVG- und WebP-Bilder ohne Qualitätsverlust. Schnell und kostenlos.",
+        dropzone: "Bilder hierher ziehen oder zum Hochladen klicken",
+        stats: "Reduziert um",
+        downloadAll: "Alle herunterladen",
+        footer: "Kostenlose Online-Bildkomprimierung",
     },
     fr: {
-        'dropzone.title': 'Déposez votre fichier ici',
-        'dropzone.subtitle': 'ou cliquez pour sélectionner',
-        'quality.label': 'Qualité',
-        'button.compress': 'Compresser',
-        'button.processing': 'Traitement...',
-        'result.title': 'Compression terminée !',
-        'button.download': 'Télécharger',
+        title: "Zipply | Compresseur d'images intelligent",
+        description: "Compressez vos images JPG, PNG, SVG et WebP sans perte de qualité. Rapide и gratuit.",
+        dropzone: "Déposez les images ici или cliquez pour télécharger",
+        stats: "Réduit de",
+        downloadAll: "Tout télécharger",
+        footer: "Compression d'images en ligne gratuite",
     },
+    es: {
+        title: "Zipply | Compresor de imágenes inteligente",
+        description: "Comprime imágenes JPG, PNG, SVG и WebP sin perder calidad. Rápido и gratuito.",
+        dropzone: "Arrastra las imágenes aquí o haz clic para subirlas",
+        stats: "Reducido por",
+        downloadAll: "Descargar todo",
+        footer: "Compresión de imágenes en línea gratuita",
+    }
 };
-
-export async function loadTranslations(lang: string): Promise<Record<string, string>> {
-    return translations[lang] || translations.en;
-}
