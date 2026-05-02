@@ -1,73 +1,64 @@
-import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import "@/app/globals.css";
-import { dictionaries, Locale } from "@/lib/i18n";
+// app/[lang]/layout.tsx
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" });
-const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta" });
+const LANGUAGES = [
+    { code: 'en', name: 'EN', label: 'English' },
+    { code: 'es', name: 'ES', label: 'Español' },
+    { code: 'pt', name: 'PT', label: 'Português' },
+    { code: 'fr', name: 'FR', label: 'Français' },
+    { code: 'de', name: 'DE', label: 'Deutsch' },
+    { code: 'ru', name: 'RU', label: 'Русский' },
+] as const;
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+const BASE_URL = 'https://zipply.io';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
-    const dict = dictionaries[lang] || dictionaries.en;
+    const alternates: Record<string, string> = {};
+    LANGUAGES.forEach(l => { alternates[l.code] = `${BASE_URL}/${l.code}`; });
 
     return {
-        title: dict.title,
-        description: dict.description,
-        alternates: {
-            languages: {
-                'en': '/en',
-                'ru': '/ru',
-                'de': '/de',
-                'fr': '/fr',
-                'es': '/es',
-            },
-        },
-        icons: {
-            icon: '/favicon.ico',
-        }
+        metadataBase: new URL(BASE_URL),
+        alternates: { canonical: `${BASE_URL}/${lang}`, languages: alternates },
+        openGraph: { locale: lang, type: 'website', siteName: 'Zipply' },
+        twitter: { card: 'summary_large_image' },
     };
 }
 
-export default async function RootLayout({
-                                             children,
-                                             params,
-                                         }: {
-    children: React.ReactNode;
-    params: Promise<{ lang: Locale }>;
-}) {
+export default async function LangLayout({ children, params }: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
     const { lang } = await params;
-    const dict = dictionaries[lang] || dictionaries.en;
 
     return (
-        <html lang={lang}>
-        <body className={`${inter.variable} ${jakarta.variable} font-sans antialiased bg-[#F9FAFB]`}>
         <div className="min-h-screen flex flex-col">
             <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md">
                 <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        {/* Твой SVG логотип Zipply здесь */}
-                        <span className="font-jakarta font-extrabold text-2xl tracking-tight text-blue-600 italic">ZIPPLY</span>
+                    <Link href={`/${lang}`} className="flex items-center gap-2">
+                        <svg width="140" height="42" viewBox="0 0 200 60" className="h-10 w-auto">
+                            <path d="M15 45L25 15M30 45L40 15" stroke="#007BFF" strokeWidth="6" strokeLinecap="round"/>
+                            <text x="50" y="42" fill="#007BFF" fontFamily="Arial, sans-serif" fontWeight="bold" fontStyle="italic" fontSize="36" letterSpacing="-1">Zipply</text>
+                        </svg>
+                    </Link>
+
+                    <div className="flex items-center gap-4">
+                        <Link href={`/${lang}/blog`} className="text-sm font-medium text-gray-600 hover:text-[#007BFF] transition-colors">
+                            {lang === 'ru' ? 'Блог' : 'Blog'}
+                        </Link>
+                        <LanguageSwitcher currentLang={lang} />
                     </div>
-                    <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
-                        <a href={`/${lang}`} className="hover:text-blue-600 transition-colors">Compress</a>
-                        <a href="#" className="hover:text-blue-600 transition-colors">Converter</a>
-                    </nav>
                 </div>
             </header>
 
-            <main className="flex-1">
-                {children}
-            </main>
+            <main className="flex-1">{children}</main>
 
             <footer className="border-t border-gray-100 bg-white py-12">
                 <div className="max-w-6xl mx-auto px-4 text-center">
                     <p className="text-gray-500 text-sm">
-                        © {new Date().getFullYear()} Zipply — {dict.footer}
+                        © {new Date().getFullYear()} Zipply — {lang === 'ru' ? 'Бесплатное сжатие изображений онлайн' : 'Free Online Image Compression'}
                     </p>
                 </div>
             </footer>
         </div>
-        </body>
-        </html>
     );
 }
