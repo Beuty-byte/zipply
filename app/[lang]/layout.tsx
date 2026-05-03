@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import MobileMenu from '@/components/MobileMenu';
 
 const LANGUAGES = [
     { code: 'en', name: 'EN', label: 'English' },
@@ -32,7 +33,7 @@ export default async function LangLayout({ children, params }: { children: React
 
     return (
         <div className="min-h-screen flex flex-col">
-            <header className="sticky top-0 z-50 w-full border-gray-200 bg-white">
+            <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
                 <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
                     <Link href={`/${lang}`} className="flex items-center gap-2">
                         <svg width="140" height="42" viewBox="0 0 200 60" className="h-10 w-auto">
@@ -41,12 +42,16 @@ export default async function LangLayout({ children, params }: { children: React
                         </svg>
                     </Link>
 
-                    <div className="flex items-center gap-4">
+                    {/* Десктопная навигация */}
+                    <div className="hidden md:flex items-center gap-4">
                         <Link href={`/${lang}/blog`} className="text-sm font-medium text-gray-600 hover:text-[#007BFF] transition-colors">
                             {lang === 'ru' ? 'Блог' : 'Blog'}
                         </Link>
                         <LanguageSwitcher currentLang={lang} />
                     </div>
+
+                    {/* Мобильное меню (бургер) */}
+                    <MobileMenu lang={lang} />
                 </div>
             </header>
 
