@@ -12,13 +12,13 @@ const data: Record<Lang, {
     heroTitle: string;
     heroSub: string;
     cta: string;
-    orDrop: string;
-    privacyNote: string;
     formatsLabel: string;
     formatsTitle: string;
     whyLabel: string;
     whyTitle: string;
-    allTools: string;
+    toolsTitle: string;
+    compressLabel: string;
+    convertLabel: string;
     readyTitle: string;
     readySub: string;
     readyCta: string;
@@ -31,14 +31,14 @@ const data: Record<Lang, {
         badge: 'Free & Private',
         heroTitle: 'Compress images in seconds',
         heroSub: 'Reduce file size up to 80% while maintaining quality. Free, fast, and processed entirely in your browser.',
-        cta: 'Browse Files',
-        orDrop: 'or drop files',
-        privacyNote: 'Your files are processed locally in your browser',
+        cta: 'Start Compressing',
         formatsLabel: 'SUPPORTED FORMATS',
         formatsTitle: 'Convert between all major image formats',
         whyLabel: 'WHY ZIPPLY',
         whyTitle: 'Built for speed, security, and simplicity',
-        allTools: 'All Tools',
+        toolsTitle: 'All Tools',
+        compressLabel: 'Compress',
+        convertLabel: 'Convert',
         readyTitle: 'Ready to compress your images?',
         readySub: 'Free, fast, and completely private.',
         readyCta: 'Start for Free',
@@ -51,103 +51,76 @@ const data: Record<Lang, {
         badge: 'Бесплатно и приватно',
         heroTitle: 'Сжимайте изображения за секунды',
         heroSub: 'Уменьшайте размер до 80% без потери качества. Бесплатно, быстро и полностью в браузере.',
-        cta: 'Выбрать файлы',
-        orDrop: 'или перетащите',
-        privacyNote: 'Файлы обрабатываются локально в браузере',
+        cta: 'Начать сжатие',
         formatsLabel: 'ПОДДЕРЖИВАЕМЫЕ ФОРМАТЫ',
         formatsTitle: 'Конвертируйте между всеми популярными форматами',
         whyLabel: 'ПОЧЕМУ ZIPPLY',
         whyTitle: 'Создан для скорости, безопасности и простоты',
-        allTools: 'Все инструменты',
+        toolsTitle: 'Все инструменты',
+        compressLabel: 'Сжатие',
+        convertLabel: 'Конвертация',
         readyTitle: 'Готовы сжать изображения?',
         readySub: 'Бесплатно, быстро и полностью приватно.',
         readyCta: 'Начать бесплатно',
         aboutTitle: 'Бесплатное сжатие и конвертация изображений онлайн',
-        aboutText1: 'Zipply — это бесплатный онлайн-инструмент для сжатия и конвертации изображений. Уменьшайте размер файлов JPEG, PNG, WebP, GIF, SVG и AVIF без потери качества. Вся обработка происходит прямо в вашем браузере — файлы никогда не покидают ваше устройство.',
-        aboutText2: 'Без регистрации, без загрузок на сервер, без ограничений. Просто быстрая, приватная и безопасная оптимизация изображений для веба, email, соцсетей и не только.',
-        aboutText3: 'Благодаря поддержке современных форматов (WebP, AVIF), пакетной обработке и умным алгоритмам сжатия, Zipply помогает ускорить сайты, сэкономить место и улучшить позиции в поисковых системах.',
+        aboutText1: 'Zipply — это бесплатный онлайн-инструмент для сжатия и конвертации изображений.',
+        aboutText2: 'Без регистрации, без загрузок на сервер, без ограничений.',
+        aboutText3: 'Поддержка WebP, AVIF, пакетная обработка и умные алгоритмы сжатия.',
     },
     es: {
-        badge: 'Gratis y privado',
-        heroTitle: 'Comprime imágenes en segundos',
-        heroSub: 'Reduce el tamaño hasta un 80% manteniendo la calidad. Gratis, rápido y procesado en tu navegador.',
-        cta: 'Seleccionar archivos',
-        orDrop: 'o arrastra y suelta',
-        privacyNote: 'Tus archivos se procesan localmente en tu navegador',
-        formatsLabel: 'FORMATOS COMPATIBLES',
-        formatsTitle: 'Convierte entre los principales formatos de imagen',
-        whyLabel: 'POR QUÉ ZIPPLY',
-        whyTitle: 'Diseñado para velocidad, seguridad y simplicidad',
-        allTools: 'Todas las herramientas',
-        readyTitle: '¿Listo para comprimir tus imágenes?',
-        readySub: 'Gratis, rápido y completamente privado.',
-        readyCta: 'Comenzar gratis',
-        aboutTitle: 'Compresor y convertidor de imágenes online gratuito',
-        aboutText1: 'Zipply es una herramienta online gratuita para comprimir y convertir imágenes. Reduce el tamaño de tus archivos JPEG, PNG, WebP, GIF, SVG y AVIF sin perder calidad. Todo el procesamiento ocurre directamente en tu navegador: tus archivos nunca salen de tu dispositivo.',
-        aboutText2: 'Sin registro, sin subidas, sin límites. Solo optimización de imágenes rápida, privada y segura para web, email, redes sociales y más.',
-        aboutText3: 'Con soporte para formatos modernos como WebP y AVIF, procesamiento por lotes y algoritmos inteligentes de compresión, Zipply te ayuda a mejorar el rendimiento web, ahorrar espacio y potenciar tu SEO.',
+        badge: 'Gratis y privado', heroTitle: 'Comprime imágenes en segundos', heroSub: 'Reduce el tamaño hasta un 80% manteniendo la calidad.', cta: 'Comenzar a comprimir',
+        formatsLabel: 'FORMATOS COMPATIBLES', formatsTitle: 'Convierte entre los principales formatos', whyLabel: 'POR QUÉ ZIPPLY', whyTitle: 'Velocidad, seguridad y simplicidad',
+        toolsTitle: 'Todas las herramientas', compressLabel: 'Comprimir', convertLabel: 'Convertir', readyTitle: '¿Listo para comprimir?', readySub: 'Gratis, rápido y privado.', readyCta: 'Comenzar gratis',
+        aboutTitle: 'Compresor de imágenes online gratuito', aboutText1: 'Zipply es una herramienta online gratuita para comprimir y convertir imágenes.', aboutText2: 'Sin registro, sin subidas, sin límites.', aboutText3: 'Soporte para formatos modernos y algoritmos inteligentes.',
     },
     pt: {
-        badge: 'Grátis e privado',
-        heroTitle: 'Comprima imagens em segundos',
-        heroSub: 'Reduza o tamanho até 80% mantendo a qualidade. Grátis, rápido e processado no seu navegador.',
-        cta: 'Selecionar arquivos',
-        orDrop: 'ou arraste e solte',
-        privacyNote: 'Seus arquivos são processados localmente no seu navegador',
-        formatsLabel: 'FORMATOS SUPORTADOS',
-        formatsTitle: 'Converta entre os principais formatos de imagem',
-        whyLabel: 'POR QUE ZIPPLY',
-        whyTitle: 'Feito para velocidade, segurança e simplicidade',
-        allTools: 'Todas as ferramentas',
-        readyTitle: 'Pronto para comprimir suas imagens?',
-        readySub: 'Grátis, rápido e completamente privado.',
-        readyCta: 'Começar grátis',
-        aboutTitle: 'Compressor e conversor de imagens online grátis',
-        aboutText1: 'Zipply é uma ferramenta online gratuita para comprimir e converter imagens. Reduza o tamanho dos seus arquivos JPEG, PNG, WebP, GIF, SVG e AVIF sem perder qualidade. Todo o processamento acontece diretamente no seu navegador — seus arquivos nunca saem do seu dispositivo.',
-        aboutText2: 'Sem registro, sem uploads, sem limites. Apenas otimização de imagens rápida, privada e segura para web, e-mail, redes sociais e muito mais.',
-        aboutText3: 'Com suporte para formatos modernos como WebP e AVIF, processamento em lote e algoritmos inteligentes de compressão, o Zipply ajuda você a melhorar o desempenho do site, economizar espaço e impulsionar o SEO.',
+        badge: 'Grátis e privado', heroTitle: 'Comprima imagens em segundos', heroSub: 'Reduza o tamanho até 80% mantendo a qualidade.', cta: 'Começar a comprimir',
+        formatsLabel: 'FORMATOS SUPORTADOS', formatsTitle: 'Converta entre os principais formatos', whyLabel: 'POR QUE ZIPPLY', whyTitle: 'Velocidade, segurança e simplicidade',
+        toolsTitle: 'Todas as ferramentas', compressLabel: 'Comprimir', convertLabel: 'Converter', readyTitle: 'Pronto para comprimir?', readySub: 'Grátis, rápido e privado.', readyCta: 'Começar grátis',
+        aboutTitle: 'Compressor de imagens online grátis', aboutText1: 'Zipply é uma ferramenta online gratuita para comprimir e converter imagens.', aboutText2: 'Sem registro, sem uploads, sem limites.', aboutText3: 'Suporte para formatos modernos e algoritmos inteligentes.',
     },
     fr: {
-        badge: 'Gratuit et privé',
-        heroTitle: 'Compressez des images en quelques secondes',
-        heroSub: 'Réduisez la taille jusqu\'à 80% tout en conservant la qualité. Gratuit, rapide et traité dans votre navigateur.',
-        cta: 'Sélectionner des fichiers',
-        orDrop: 'ou glissez-déposez',
-        privacyNote: 'Vos fichiers sont traités localement dans votre navigateur',
-        formatsLabel: 'FORMATS SUPPORTÉS',
-        formatsTitle: 'Convertissez entre tous les principaux formats d\'image',
-        whyLabel: 'POURQUOI ZIPPLY',
-        whyTitle: 'Conçu pour la vitesse, la sécurité et la simplicité',
-        allTools: 'Tous les outils',
-        readyTitle: 'Prêt à compresser vos images ?',
-        readySub: 'Gratuit, rapide et totalement privé.',
-        readyCta: 'Commencer gratuitement',
-        aboutTitle: 'Compresseur et convertisseur d\'images en ligne gratuit',
-        aboutText1: 'Zipply est un outil en ligne gratuit pour compresser et convertir des images. Réduisez la taille de vos fichiers JPEG, PNG, WebP, GIF, SVG et AVIF sans perte de qualité. Tout le traitement se fait directement dans votre navigateur — vos fichiers ne quittent jamais votre appareil.',
-        aboutText2: 'Pas d\'inscription, pas de téléchargement, pas de limites. Juste une optimisation d\'image rapide, privée et sécurisée pour le web, les emails, les réseaux sociaux et plus encore.',
-        aboutText3: 'Grâce à la prise en charge des formats modernes comme WebP et AVIF, au traitement par lots et aux algorithmes de compression intelligents, Zipply vous aide à améliorer les performances de votre site, à économiser de l\'espace et à booster votre SEO.',
+        badge: 'Gratuit et privé', heroTitle: 'Compressez des images en quelques secondes', heroSub: 'Réduisez la taille jusqu\'à 80%.', cta: 'Commencer à compresser',
+        formatsLabel: 'FORMATS SUPPORTÉS', formatsTitle: 'Convertissez entre tous les formats', whyLabel: 'POURQUOI ZIPPLY', whyTitle: 'Vitesse, sécurité et simplicité',
+        toolsTitle: 'Tous les outils', compressLabel: 'Compresser', convertLabel: 'Convertir', readyTitle: 'Prêt à compresser ?', readySub: 'Gratuit, rapide et privé.', readyCta: 'Commencer gratuitement',
+        aboutTitle: 'Compresseur d\'images en ligne gratuit', aboutText1: 'Zipply est un outil en ligne gratuit pour compresser et convertir des images.', aboutText2: 'Pas d\'inscription, pas de limites.', aboutText3: 'Formats modernes et algorithmes intelligents.',
     },
     de: {
-        badge: 'Kostenlos & privat',
-        heroTitle: 'Bilder in Sekunden komprimieren',
-        heroSub: 'Reduzieren Sie die Dateigröße um bis zu 80% bei hoher Qualität. Kostenlos, schnell und im Browser verarbeitet.',
-        cta: 'Dateien auswählen',
-        orDrop: 'oder per Drag & Drop',
-        privacyNote: 'Ihre Dateien werden lokal in Ihrem Browser verarbeitet',
-        formatsLabel: 'UNTERSTÜTZTE FORMATE',
-        formatsTitle: 'Konvertieren Sie zwischen allen gängigen Bildformaten',
-        whyLabel: 'WARUM ZIPPLY',
-        whyTitle: 'Entwickelt für Geschwindigkeit, Sicherheit und Einfachheit',
-        allTools: 'Alle Tools',
-        readyTitle: 'Bereit, Ihre Bilder zu komprimieren?',
-        readySub: 'Kostenlos, schnell und absolut privat.',
-        readyCta: 'Kostenlos starten',
-        aboutTitle: 'Kostenloser Online-Bildkompressor und -Konverter',
-        aboutText1: 'Zipply ist ein kostenloses Online-Tool zum Komprimieren und Konvertieren von Bildern. Reduzieren Sie die Größe Ihrer JPEG-, PNG-, WebP-, GIF-, SVG- und AVIF-Dateien ohne Qualitätsverlust. Die gesamte Verarbeitung findet direkt in Ihrem Browser statt — Ihre Dateien verlassen nie Ihr Gerät.',
-        aboutText2: 'Keine Registrierung, keine Uploads, keine Limits. Nur schnelle, private und sichere Bildoptimierung für Web, E-Mail, soziale Medien und mehr.',
-        aboutText3: 'Mit Unterstützung für moderne Formate wie WebP und AVIF, Stapelverarbeitung und intelligenten Komprimierungsalgorithmen hilft Ihnen Zipply, die Website-Performance zu verbessern, Speicherplatz zu sparen und Ihr SEO zu verbessern.',
+        badge: 'Kostenlos & privat', heroTitle: 'Bilder in Sekunden komprimieren', heroSub: 'Reduzieren Sie die Dateigröße um bis zu 80%.', cta: 'Jetzt komprimieren',
+        formatsLabel: 'UNTERSTÜTZTE FORMATE', formatsTitle: 'Konvertieren Sie zwischen allen Formaten', whyLabel: 'WARUM ZIPPLY', whyTitle: 'Geschwindigkeit, Sicherheit, Einfachheit',
+        toolsTitle: 'Alle Tools', compressLabel: 'Komprimieren', convertLabel: 'Konvertieren', readyTitle: 'Bereit zum Komprimieren?', readySub: 'Kostenlos, schnell und privat.', readyCta: 'Kostenlos starten',
+        aboutTitle: 'Kostenloser Online-Bildkompressor', aboutText1: 'Zipply ist ein kostenloses Online-Tool zum Komprimieren und Konvertieren von Bildern.', aboutText2: 'Keine Registrierung, keine Limits.', aboutText3: 'Moderne Formate und intelligente Algorithmen.',
     },
 };
+
+const compressTools = [
+    { href: 'compress/jpeg', label: { en: 'Compress JPEG', ru: 'Сжать JPEG', es: 'Comprimir JPEG', pt: 'Comprimir JPEG', fr: 'Compresser JPEG', de: 'JPEG komprimieren' } },
+    { href: 'compress/png', label: { en: 'Compress PNG', ru: 'Сжать PNG', es: 'Comprimir PNG', pt: 'Comprimir PNG', fr: 'Compresser PNG', de: 'PNG komprimieren' } },
+    { href: 'compress/webp', label: { en: 'Compress WebP', ru: 'Сжать WebP', es: 'Comprimir WebP', pt: 'Comprimir WebP', fr: 'Compresser WebP', de: 'WebP komprimieren' } },
+    { href: 'compress/gif', label: { en: 'Compress GIF', ru: 'Сжать GIF', es: 'Comprimir GIF', pt: 'Comprimir GIF', fr: 'Compresser GIF', de: 'GIF komprimieren' } },
+    { href: 'compress/svg', label: { en: 'Compress SVG', ru: 'Сжать SVG', es: 'Comprimir SVG', pt: 'Comprimir SVG', fr: 'Compresser SVG', de: 'SVG komprimieren' } },
+    { href: 'compress/avif', label: { en: 'Compress AVIF', ru: 'Сжать AVIF', es: 'Comprimir AVIF', pt: 'Comprimir AVIF', fr: 'Compresser AVIF', de: 'AVIF komprimieren' } },
+    { href: 'video/compress', label: { en: 'Compress Video', ru: 'Сжать видео', es: 'Comprimir video', pt: 'Comprimir vídeo', fr: 'Compresser vidéo', de: 'Video komprimieren' } },
+    { href: 'resize', label: { en: 'Resize Image', ru: 'Изменить размер', es: 'Redimensionar', pt: 'Redimensionar', fr: 'Redimensionner', de: 'Bild skalieren' } },
+];
+
+const convertTools = [
+    { href: 'convert/png-to-jpg', label: { en: 'PNG to JPG', ru: 'PNG в JPG', es: 'PNG a JPG', pt: 'PNG para JPG', fr: 'PNG en JPG', de: 'PNG zu JPG' } },
+    { href: 'convert/jpg-to-png', label: { en: 'JPG to PNG', ru: 'JPG в PNG', es: 'JPG a PNG', pt: 'JPG para PNG', fr: 'JPG en PNG', de: 'JPG zu PNG' } },
+    { href: 'convert/png-to-webp', label: { en: 'PNG to WebP', ru: 'PNG в WebP', es: 'PNG a WebP', pt: 'PNG para WebP', fr: 'PNG en WebP', de: 'PNG zu WebP' } },
+    { href: 'convert/jpg-to-webp', label: { en: 'JPG to WebP', ru: 'JPG в WebP', es: 'JPG a WebP', pt: 'JPG para WebP', fr: 'JPG en WebP', de: 'JPG zu WebP' } },
+    { href: 'convert/webp-to-jpg', label: { en: 'WebP to JPG', ru: 'WebP в JPG', es: 'WebP a JPG', pt: 'WebP para JPG', fr: 'WebP en JPG', de: 'WebP zu JPG' } },
+    { href: 'convert/webp-to-png', label: { en: 'WebP to PNG', ru: 'WebP в PNG', es: 'WebP a PNG', pt: 'WebP para PNG', fr: 'WebP en PNG', de: 'WebP zu PNG' } },
+    { href: 'convert/svg-to-png', label: { en: 'SVG to PNG', ru: 'SVG в PNG', es: 'SVG a PNG', pt: 'SVG para PNG', fr: 'SVG en PNG', de: 'SVG zu PNG' } },
+    { href: 'convert/gif-to-mp4', label: { en: 'GIF to MP4', ru: 'GIF в MP4', es: 'GIF a MP4', pt: 'GIF para MP4', fr: 'GIF en MP4', de: 'GIF zu MP4' } },
+    { href: 'convert/mp4-to-gif', label: { en: 'MP4 to GIF', ru: 'MP4 в GIF', es: 'MP4 a GIF', pt: 'MP4 para GIF', fr: 'MP4 en GIF', de: 'MP4 zu GIF' } },
+    { href: 'convert/video-to-audio', label: { en: 'Video to Audio', ru: 'Видео в аудио', es: 'Video a audio', pt: 'Vídeo para áudio', fr: 'Vidéo en audio', de: 'Video zu Audio' } },
+    { href: 'convert/video-convert', label: { en: 'Video Converter', ru: 'Конвертер видео', es: 'Convertidor de video', pt: 'Conversor de vídeo', fr: 'Convertisseur vidéo', de: 'Video-Konverter' } },
+    { href: 'convert/mov-to-mp4', label: { en: 'MOV to MP4', ru: 'MOV в MP4', es: 'MOV a MP4', pt: 'MOV para MP4', fr: 'MOV en MP4', de: 'MOV zu MP4' } },
+    { href: 'convert/avi-to-mp4', label: { en: 'AVI to MP4', ru: 'AVI в MP4', es: 'AVI a MP4', pt: 'AVI para MP4', fr: 'AVI en MP4', de: 'AVI zu MP4' } },
+    { href: 'convert/mkv-to-mp4', label: { en: 'MKV to MP4', ru: 'MKV в MP4', es: 'MKV a MP4', pt: 'MKV para MP4', fr: 'MKV en MP4', de: 'MKV zu MP4' } },
+    { href: 'convert/to-webm', label: { en: 'To WebM', ru: 'В WebM', es: 'A WebM', pt: 'Para WebM', fr: 'En WebM', de: 'Zu WebM' } },
+];
 
 const formats = [
     { ext: 'jpg', label: 'JPEG', desc: { en: 'Best for photos', ru: 'Лучше для фото', es: 'Mejor para fotos', pt: 'Melhor para fotos', fr: 'Idéal pour les photos', de: 'Am besten für Fotos' } as Record<Lang, string>, color: 'bg-blue-50 text-blue-700' },
@@ -157,11 +130,11 @@ const formats = [
 ];
 
 const features = [
-    { icon: '🔒', title: { en: '100% Secure', ru: '100% Безопасно', es: '100% Seguro', pt: '100% Seguro', fr: '100% Sécurisé', de: '100% Sicher' } as Record<Lang, string>, desc: { en: 'Your files never leave your browser. All processing happens locally.', ru: 'Файлы не покидают браузер. Обработка локально.', es: 'Tus archivos nunca salen de tu navegador.', pt: 'Seus arquivos nunca saem do seu navegador.', fr: 'Vos fichiers ne quittent jamais votre navigateur.', de: 'Ihre Dateien verlassen nie Ihren Browser.' } as Record<Lang, string> },
-    { icon: '⚡', title: { en: 'Lightning Fast', ru: 'Молниеносно', es: 'Rapidísimo', pt: 'Rapidíssimo', fr: 'Ultra rapide', de: 'Blitzschnell' } as Record<Lang, string>, desc: { en: 'Powered by modern browser APIs for instant compression.', ru: 'Современные API браузера для мгновенного сжатия.', es: 'Impulsado por APIs modernas del navegador.', pt: 'Alimentado por APIs modernas do navegador.', fr: 'Propulsé par des API de navigateur modernes.', de: 'Powered by moderne Browser-APIs.' } as Record<Lang, string> },
-    { icon: '🛡️', title: { en: 'Privacy First', ru: 'Приватность', es: 'Privacidad primero', pt: 'Privacidade primeiro', fr: 'Confidentialité d\'abord', de: 'Privatsphäre zuerst' } as Record<Lang, string>, desc: { en: 'No uploads, no servers, no data collection.', ru: 'Без загрузок, серверов и сбора данных.', es: 'Sin subidas, sin servidores, sin recolección de datos.', pt: 'Sem uploads, sem servidores, sem coleta de dados.', fr: 'Pas de téléchargement, pas de serveurs, pas de collecte.', de: 'Keine Uploads, keine Server, keine Datensammlung.' } as Record<Lang, string> },
+    { icon: '🔒', title: { en: '100% Secure', ru: '100% Безопасно', es: '100% Seguro', pt: '100% Seguro', fr: '100% Sécurisé', de: '100% Sicher' } as Record<Lang, string>, desc: { en: 'Your files never leave your browser.', ru: 'Файлы не покидают браузер.', es: 'Tus archivos nunca salen de tu navegador.', pt: 'Seus arquivos nunca saem do seu navegador.', fr: 'Vos fichiers ne quittent jamais votre navigateur.', de: 'Ihre Dateien verlassen nie Ihren Browser.' } as Record<Lang, string> },
+    { icon: '⚡', title: { en: 'Lightning Fast', ru: 'Молниеносно', es: 'Rapidísimo', pt: 'Rapidíssimo', fr: 'Ultra rapide', de: 'Blitzschnell' } as Record<Lang, string>, desc: { en: 'Powered by modern browser APIs.', ru: 'Современные API браузера.', es: 'Impulsado por APIs modernas.', pt: 'Alimentado por APIs modernas.', fr: 'Propulsé par des API modernes.', de: 'Powered by moderne Browser-APIs.' } as Record<Lang, string> },
+    { icon: '🛡️', title: { en: 'Privacy First', ru: 'Приватность', es: 'Privacidad primero', pt: 'Privacidade primeiro', fr: 'Confidentialité d\'abord', de: 'Privatsphäre zuerst' } as Record<Lang, string>, desc: { en: 'No uploads, no servers, no data collection.', ru: 'Без загрузок, серверов и сбора данных.', es: 'Sin subidas, sin servidores.', pt: 'Sem uploads, sem servidores.', fr: 'Pas de téléchargement, pas de serveurs.', de: 'Keine Uploads, keine Server.' } as Record<Lang, string> },
     { icon: '📦', title: { en: 'Batch Processing', ru: 'Пакетная обработка', es: 'Procesamiento por lotes', pt: 'Processamento em lote', fr: 'Traitement par lots', de: 'Stapelverarbeitung' } as Record<Lang, string>, desc: { en: 'Compress multiple images at once.', ru: 'Сжимайте несколько изображений сразу.', es: 'Comprime varias imágenes a la vez.', pt: 'Comprima várias imagens de uma vez.', fr: 'Compressez plusieurs images à la fois.', de: 'Komprimieren Sie mehrere Bilder auf einmal.' } as Record<Lang, string> },
-    { icon: '✨', title: { en: 'Quality Preservation', ru: 'Сохранение качества', es: 'Preservación de calidad', pt: 'Preservação de qualidade', fr: 'Préservation de la qualité', de: 'Qualitätserhalt' } as Record<Lang, string>, desc: { en: 'Smart algorithms that reduce size while maintaining visual quality.', ru: 'Умные алгоритмы сохраняют качество.', es: 'Algoritmos inteligentes que mantienen la calidad visual.', pt: 'Algoritmos inteligentes que mantêm a qualidade visual.', fr: 'Algorithmes intelligents qui préservent la qualité visuelle.', de: 'Intelligente Algorithmen, die die visuelle Qualität erhalten.' } as Record<Lang, string> },
+    { icon: '✨', title: { en: 'Quality Preservation', ru: 'Сохранение качества', es: 'Preservación de calidad', pt: 'Preservação de qualidade', fr: 'Préservation de la qualité', de: 'Qualitätserhalt' } as Record<Lang, string>, desc: { en: 'Smart algorithms reduce size while maintaining visual quality.', ru: 'Умные алгоритмы сохраняют качество.', es: 'Algoritmos inteligentes que mantienen la calidad visual.', pt: 'Algoritmos inteligentes que mantêm a qualidade visual.', fr: 'Algorithmes intelligents qui préservent la qualité visuelle.', de: 'Intelligente Algorithmen, die die visuelle Qualität erhalten.' } as Record<Lang, string> },
     { icon: '🌐', title: { en: 'Works Everywhere', ru: 'Работает везде', es: 'Funciona en todas partes', pt: 'Funciona em todo lugar', fr: 'Fonctionne partout', de: 'Funktioniert überall' } as Record<Lang, string>, desc: { en: 'No installation needed. Works on any device with a modern browser.', ru: 'Не требует установки. Работает на любом устройстве.', es: 'Sin instalación. Funciona en cualquier dispositivo.', pt: 'Sem instalação. Funciona em qualquer dispositivo.', fr: 'Aucune installation nécessaire. Fonctionne sur n\'importe quel appareil.', de: 'Keine Installation nötig. Funktioniert auf jedem Gerät.' } as Record<Lang, string> },
 ];
 
@@ -183,44 +156,62 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     return (
         <div className="bg-white">
             {/* ── HERO ── */}
-            <section className="relative bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] text-white py-24">
+            <section className="relative bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] text-white py-20">
                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
-                <div className="relative max-w-3xl mx-auto px-4 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-white/90 rounded-full text-sm font-medium mb-8">
+                <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-white/90 rounded-full text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               {d.badge}
           </span>
-                    <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-                        {d.heroTitle}
-                    </h1>
-                    <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
-                        {d.heroSub}
-                    </p>
-                    <div className="max-w-lg mx-auto">
-                        <div className="border-2 border-dashed border-gray-600 rounded-2xl p-12 hover:border-[#007BFF] transition-colors cursor-pointer bg-white/5 backdrop-blur-sm">
-                            <p className="text-4xl mb-4">📁</p>
-                            <Link
-                                href={`/${lang}/compress/jpeg`}
-                                className="inline-flex items-center px-8 py-3.5 bg-[#007BFF] hover:bg-[#0056CC] text-white font-semibold rounded-xl text-base transition-all shadow-lg shadow-blue-500/25"
-                            >
-                                {d.cta}
-                            </Link>
-                            <p className="text-sm text-gray-500 mt-4">{d.orDrop}</p>
-                            <p className="text-xs text-gray-600 mt-3 flex items-center justify-center gap-1">
-                                <span>🔒</span> {d.privacyNote}
-                            </p>
+                    <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight">{d.heroTitle}</h1>
+                    <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto leading-relaxed">{d.heroSub}</p>
+                    <Link href={`/${lang}/compress/jpeg`} className="inline-flex items-center px-8 py-3.5 bg-[#007BFF] hover:bg-[#0056CC] text-white font-semibold rounded-xl text-base transition-all shadow-lg shadow-blue-500/25">
+                        {d.cta} →
+                    </Link>
+                </div>
+            </section>
+
+            {/* ── ALL TOOLS (перемещено сразу под hero) ── */}
+            <section className="py-16 bg-white">
+                <div className="max-w-5xl mx-auto px-4">
+                    <h2 className="text-2xl font-bold text-center mb-10 text-gray-500">{d.toolsTitle}</h2>
+
+                    <div className="mb-8">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                            <span className="w-2 h-2 bg-[#007BFF] rounded-full" />
+                            {d.compressLabel}
+                        </h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            {compressTools.map(tool => (
+                                <Link key={tool.href} href={`/${lang}/${tool.href}`}
+                                      className="p-3 bg-white border border-gray-200 rounded-xl hover:border-[#007BFF] hover:shadow-md text-sm font-medium text-gray-700 hover:text-[#007BFF] transition-all text-center">
+                                    {tool.label[langKey] || tool.label.en}
+                                </Link>
+                            ))}
                         </div>
-                        <p className="text-xs text-gray-500 mt-3">
-                            Support for JPG, PNG, WebP, and AVIF formats. Up to 50MB per file.
-                        </p>
+                    </div>
+
+                    <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                            <span className="w-2 h-2 bg-green-500 rounded-full" />
+                            {d.convertLabel}
+                        </h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            {convertTools.map(tool => (
+                                <Link key={tool.href} href={`/${lang}/${tool.href}`}
+                                      className="p-3 bg-white border border-gray-200 rounded-xl hover:border-[#007BFF] hover:shadow-md text-sm font-medium text-gray-700 hover:text-[#007BFF] transition-all text-center">
+                                    {tool.label[langKey] || tool.label.en}
+                                </Link>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* ── ABOUT / SEO-ТЕКСТ ── */}
+            {/* ── ABOUT ── */}
             <section className="py-16 bg-gray-50">
                 <div className="max-w-4xl mx-auto px-4">
-                    <h2 className="text-3xl font-bold text-center mb-8">{d.aboutTitle}</h2>
+                    <h2 className="text-3xl font-bold text-center mb-8 text-gray-500">{d.aboutTitle}</h2>
                     <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
                         <p>{d.aboutText1}</p>
                         <p>{d.aboutText2}</p>
@@ -230,12 +221,10 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </section>
 
             {/* ── FORMATS ── */}
-            <section className="py-20 bg-white">
+            <section className="py-16 bg-white">
                 <div className="max-w-4xl mx-auto px-4">
-                    <p className="text-xs font-semibold text-[#007BFF] uppercase tracking-widest mb-3 text-center">
-                        {d.formatsLabel}
-                    </p>
-                    <h2 className="text-3xl font-bold text-center mb-12">{d.formatsTitle}</h2>
+                    <p className="text-xs font-semibold text-[#007BFF] uppercase tracking-widest mb-3 text-center">{d.formatsLabel}</p>
+                    <h2 className="text-2xl font-bold text-center mb-10 text-gray-500">{d.formatsTitle}</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {formats.map(f => (
                             <div key={f.ext} className="group p-6 bg-white border border-gray-100 rounded-2xl hover:border-[#007BFF] hover:shadow-xl transition-all text-center">
@@ -249,18 +238,14 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </section>
 
             {/* ── FEATURES ── */}
-            <section className="py-20 bg-gray-50">
+            <section className="py-16 bg-gray-50">
                 <div className="max-w-5xl mx-auto px-4">
-                    <p className="text-xs font-semibold text-[#007BFF] uppercase tracking-widest mb-3 text-center">
-                        {d.whyLabel}
-                    </p>
-                    <h2 className="text-3xl font-bold text-center mb-12">{d.whyTitle}</h2>
+                    <p className="text-xs font-semibold text-[#007BFF] uppercase tracking-widest mb-3 text-center">{d.whyLabel}</p>
+                    <h2 className="text-2xl font-bold text-center mb-10 text-gray-500">{d.whyTitle}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {features.map(f => (
                             <div key={f.title.en} className="group p-6 bg-white border border-gray-100 rounded-2xl hover:border-[#007BFF] hover:shadow-xl transition-all">
-                                <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                                    {f.icon}
-                                </div>
+                                <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">{f.icon}</div>
                                 <p className="font-bold text-lg text-gray-900 mb-2">{f.title[langKey]}</p>
                                 <p className="text-sm text-gray-500 leading-relaxed">{f.desc[langKey]}</p>
                             </div>
@@ -270,16 +255,11 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </section>
 
             {/* ── CTA ── */}
-            <section className="py-20 bg-gradient-to-r from-[#007BFF] to-[#0056CC] text-white text-center">
+            <section className="py-16 bg-gradient-to-r from-[#007BFF] to-[#0056CC] text-white text-center">
                 <div className="max-w-2xl mx-auto px-4">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">{d.readyTitle}</h2>
+                    <h2 className="text-3xl font-bold mb-4">{d.readyTitle}</h2>
                     <p className="text-white/80 text-lg mb-8">{d.readySub}</p>
-                    <Link
-                        href={`/${lang}/compress/jpeg`}
-                        className="inline-flex items-center px-10 py-4 bg-white text-[#007BFF] font-bold rounded-xl text-lg hover:bg-gray-100 transition-all shadow-lg"
-                    >
-                        {d.readyCta}
-                    </Link>
+                    <Link href={`/${lang}/compress/jpeg`} className="inline-flex items-center px-10 py-4 bg-white text-[#007BFF] font-bold rounded-xl text-lg hover:bg-gray-100 transition-all shadow-lg">{d.readyCta}</Link>
                 </div>
             </section>
         </div>

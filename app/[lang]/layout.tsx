@@ -32,7 +32,7 @@ export default async function LangLayout({ children, params }: { children: React
 
     return (
         <div className="min-h-screen flex flex-col">
-            <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md">
+            <header className="sticky top-0 z-50 w-full border-gray-200 bg-white">
                 <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
                     <Link href={`/${lang}`} className="flex items-center gap-2">
                         <svg width="140" height="42" viewBox="0 0 200 60" className="h-10 w-auto">
